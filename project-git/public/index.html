@@ -1,0 +1,164 @@
+# public/index.html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="description" content="HR Assistant - современное приложение для управления кандидатами, вахтовиками и HR процессами с ИИ интеграцией" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hr-assistant.app/" />
+    <meta property="og:title" content="HR Assistant - Управление HR процессами" />
+    <meta property="og:description" content="Современное приложение для автоматизации HR процессов с WhatsApp интеграцией и ИИ" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://hr-assistant.app/" />
+    <meta property="twitter:title" content="HR Assistant - Управление HR процессами" />
+    <meta property="twitter:description" content="Современное приложение для автоматизации HR процессов с WhatsApp интеграцией и ИИ" />
+    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Fallback for font loading -->
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <title>HR Assistant - Управление HR процессами</title>
+    
+    <!-- Critical CSS inlined -->
+    <style>
+        /* Critical CSS for loading screen */
+        .app-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .loading-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .loading-spinner {
+            width: 3rem;
+            height: 3rem;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+        
+        .loading-text {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .loading-subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Hide scrollbar during loading */
+        body {
+            overflow: hidden;
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .app-loading {
+                background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+            }
+        }
+    </style>
+</head>
+<body data-app="hr-assistant">
+    <noscript>
+        <div style="padding: 2rem; text-align: center; font-family: system-ui;">
+            <h1>JavaScript Required</h1>
+            <p>Для работы HR Assistant необходимо включить JavaScript в браузере.</p>
+            <p>To run HR Assistant, please enable JavaScript in your browser.</p>
+        </div>
+    </noscript>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="app-loading">
+        <svg class="loading-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" stroke="white" stroke-width="2" fill="none" opacity="0.3"/>
+            <path d="M30 40h40M30 50h25M30 60h35" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="75" cy="25" r="8" fill="white"/>
+        </svg>
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Загрузка HR Assistant...</div>
+        <div class="loading-subtitle">Инициализация системы</div>
+    </div>
+    
+    <!-- React App Root -->
+    <div id="root"></div>
+    
+    <!-- Remove loading screen script -->
+    <script>
+        // Remove loading screen when React app is ready
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transition = 'opacity 0.5s ease-out';
+                    setTimeout(function() {
+                        loadingScreen.remove();
+                        document.body.style.overflow = 'auto';
+                    }, 500);
+                }
+            }, 2000); // Minimum loading time for UX
+        });
+        
+        // Add app-ready class when React takes over
+        window.hrAssistantReady = function() {
+            document.body.classList.add('app-ready');
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.remove();
+                document.body.style.overflow = 'auto';
+            }
+        };
+    </script>
+</body>
+</html>
