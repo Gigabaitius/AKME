@@ -1,0 +1,333 @@
+/* src/views/components/common/Button.css */
+/* 🎯 Стили для компонента Button */
+
+.btn {
+  /* Базовые стили */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast) var(--easing-default);
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Состояния */
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled,
+.btn.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Варианты */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-text);
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn-primary:active:not(:disabled) {
+  background-color: var(--color-primary-active);
+  border-color: var(--color-primary-active);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-hover);
+  border-color: var(--border-color-hover);
+}
+
+.btn-secondary:active:not(:disabled) {
+  background-color: var(--bg-active);
+}
+
+.btn-danger {
+  background-color: var(--color-danger);
+  color: white;
+  border-color: var(--color-danger);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--danger-700);
+  border-color: var(--danger-700);
+}
+
+.btn-danger:active:not(:disabled) {
+  background-color: var(--danger-800);
+  border-color: var(--danger-800);
+}
+
+.btn-success {
+  background-color: var(--color-success);
+  color: white;
+  border-color: var(--color-success);
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: var(--success-700);
+  border-color: var(--success-700);
+}
+
+.btn-success:active:not(:disabled) {
+  background-color: var(--success-800);
+  border-color: var(--success-800);
+}
+
+.btn-warning {
+  background-color: var(--color-warning);
+  color: white;
+  border-color: var(--color-warning);
+}
+
+.btn-warning:hover:not(:disabled) {
+  background-color: var(--warning-700);
+  border-color: var(--warning-700);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: transparent;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background-color: var(--primary-50);
+  color: var(--color-primary-hover);
+}
+
+/* Размеры */
+.btn-xs {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  gap: 0.25rem;
+}
+
+.btn-sm {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.btn-md {
+  /* Размер по умолчанию */
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+}
+
+.btn-xl {
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  font-size: var(--font-size-xl);
+}
+
+/* Блочная кнопка */
+.btn-block {
+  width: 100%;
+}
+
+/* Круглая кнопка */
+.btn-circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: var(--radius-full);
+}
+
+.btn-circle.btn-sm {
+  width: 2rem;
+  height: 2rem;
+}
+
+.btn-circle.btn-lg {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Состояние загрузки */
+.btn-loading {
+  color: transparent;
+  pointer-events: none;
+}
+
+.btn-loading .btn-content {
+  visibility: hidden;
+}
+
+.btn-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 0.6s linear infinite;
+}
+
+.btn-primary .btn-spinner,
+.btn-danger .btn-spinner,
+.btn-success .btn-spinner,
+.btn-warning .btn-spinner {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-right-color: white;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Ripple эффект */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  pointer-events: none;
+}
+
+.btn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-secondary::before,
+.btn-ghost::before {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Группа кнопок */
+.btn-group {
+  display: inline-flex;
+  gap: var(--spacing-xs);
+}
+
+.btn-group-vertical {
+  flex-direction: column;
+}
+
+.btn-group-attached {
+  gap: 0;
+}
+
+.btn-group-attached .btn:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+
+.btn-group-attached .btn:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Кнопка с иконкой */
+.btn-icon-only {
+  padding: var(--spacing-sm);
+}
+
+.btn-icon-left {
+  flex-direction: row;
+}
+
+.btn-icon-right {
+  flex-direction: row-reverse;
+}
+
+/* Анимация появления */
+.btn-fade-in {
+  animation: btn-fade-in var(--transition-base) var(--easing-out);
+}
+
+@keyframes btn-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Темная тема */
+[data-theme="dark"] .btn-secondary {
+  border-color: var(--secondary-600);
+}
+
+[data-theme="dark"] .btn-secondary:hover:not(:disabled) {
+  border-color: var(--secondary-500);
+}
+
+[data-theme="dark"] .btn-ghost:hover:not(:disabled) {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 639px) {
+  .btn-mobile-block {
+    width: 100%;
+  }
+  
+  .btn-group-mobile-vertical {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-group-mobile-vertical .btn {
+    width: 100%;
+  }
+}
