@@ -1,0 +1,478 @@
+/* src/styles/animations.css */
+/* 🎭 Анимации и переходы для HR Assistant */
+
+/* === Базовые анимации === */
+
+/* Появление с fade */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Скольжение */
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Масштабирование */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* Пульсация */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulseShadow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--primary-500), 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--primary-500), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--primary-500), 0);
+  }
+}
+
+/* Вращение */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Покачивание */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes wobble {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-5deg);
+  }
+  30% {
+    transform: rotate(3deg);
+  }
+  45% {
+    transform: rotate(-3deg);
+  }
+  60% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Bounce эффекты */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Мигание */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Градиентная анимация */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* === Классы анимаций === */
+
+/* Fade анимации */
+.animate-fadeIn {
+  animation: fadeIn var(--transition-base) var(--easing-default);
+}
+
+.animate-fadeOut {
+  animation: fadeOut var(--transition-base) var(--easing-default);
+}
+
+/* Slide анимации */
+.animate-slideInUp {
+  animation: slideInUp var(--transition-slow) var(--easing-out);
+}
+
+.animate-slideInDown {
+  animation: slideInDown var(--transition-slow) var(--easing-out);
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft var(--transition-slow) var(--easing-out);
+}
+
+.animate-slideInRight {
+  animation: slideInRight var(--transition-slow) var(--easing-out);
+}
+
+/* Scale анимации */
+.animate-scaleIn {
+  animation: scaleIn var(--transition-base) var(--easing-out);
+}
+
+.animate-scaleOut {
+  animation: scaleOut var(--transition-base) var(--easing-in);
+}
+
+/* Pulse анимации */
+.animate-pulse {
+  animation: pulse 2s var(--easing-default) infinite;
+}
+
+.animate-pulseShadow {
+  animation: pulseShadow 2s var(--easing-default) infinite;
+}
+
+/* Spin анимации */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-spinSlow {
+  animation: spin 3s linear infinite;
+}
+
+.animate-spinReverse {
+  animation: spinReverse 1s linear infinite;
+}
+
+/* Shake анимации */
+.animate-shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.animate-wobble {
+  animation: wobble 1s ease-in-out;
+}
+
+/* Bounce анимации */
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+.animate-bounceIn {
+  animation: bounceIn 0.75s;
+}
+
+/* Blink анимация */
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* === Переходы === */
+
+/* Быстрый переход */
+.transition-fast {
+  transition: all var(--transition-fast) var(--easing-default);
+}
+
+/* Базовый переход */
+.transition-base {
+  transition: all var(--transition-base) var(--easing-default);
+}
+
+/* Медленный переход */
+.transition-slow {
+  transition: all var(--transition-slow) var(--easing-default);
+}
+
+/* Очень медленный переход */
+.transition-slower {
+  transition: all var(--transition-slower) var(--easing-default);
+}
+
+/* Переходы по свойствам */
+.transition-colors {
+  transition: color var(--transition-base) var(--easing-default),
+              background-color var(--transition-base) var(--easing-default),
+              border-color var(--transition-base) var(--easing-default);
+}
+
+.transition-opacity {
+  transition: opacity var(--transition-base) var(--easing-default);
+}
+
+.transition-transform {
+  transition: transform var(--transition-base) var(--easing-default);
+}
+
+.transition-shadow {
+  transition: box-shadow var(--transition-base) var(--easing-default);
+}
+
+/* === Эффекты при наведении === */
+
+/* Подъем элемента */
+.hover-lift {
+  transition: transform var(--transition-base) var(--easing-default),
+              box-shadow var(--transition-base) var(--easing-default);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Увеличение */
+.hover-grow {
+  transition: transform var(--transition-base) var(--easing-default);
+}
+
+.hover-grow:hover {
+  transform: scale(1.05);
+}
+
+/* Уменьшение */
+.hover-shrink {
+  transition: transform var(--transition-base) var(--easing-default);
+}
+
+.hover-shrink:hover {
+  transform: scale(0.95);
+}
+
+/* Подсветка */
+.hover-glow {
+  transition: box-shadow var(--transition-base) var(--easing-default);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(var(--primary-500), 0.5);
+}
+
+/* === Специальные эффекты === */
+
+/* Ripple эффект для кнопок */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Shimmer эффект для загрузки */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* === Анимации страниц === */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-slow) var(--easing-out),
+              transform var(--transition-slow) var(--easing-out);
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity var(--transition-base) var(--easing-in),
+              transform var(--transition-base) var(--easing-in);
+}
+
+/* === Утилиты анимаций === */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-1000 { animation-delay: 1000ms; }
+
+.animation-duration-fast { animation-duration: var(--transition-fast); }
+.animation-duration-base { animation-duration: var(--transition-base); }
+.animation-duration-slow { animation-duration: var(--transition-slow); }
+.animation-duration-slower { animation-duration: var(--transition-slower); }
